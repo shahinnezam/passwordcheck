@@ -14,21 +14,49 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <TextView
+            android:id="@+id/passwordPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="New Password: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <EditText
             android:id="@+id/password"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/passwordPrompt"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp"
-            android:text = "TODO: create a two-way reference to the ViewModel password property"/>
+            android:text = ""/>
+        <!-- TODO: create a two-way reference to the ViewModel password property -->
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/test"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/password"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="#ccffaa"
-            android:text="TODO: create a two-way reference to the ViewModel passwordQuality property"/>
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintBaseline_toBaselineOf="@+id/qualityPrompt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/qualityPrompt" />
+
+        <TextView
+            android:id="@+id/qualityPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Password Quality"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password" />
+        <!-- TODO: create a two-way reference to the ViewModel passwordQuality property -->
 
     </android.support.constraint.ConstraintLayout>
 </layout>

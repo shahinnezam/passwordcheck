@@ -15,9 +15,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        //Comment out the setContentView - we'll use a binding instead
+        setContentView(R.layout.activity_main);
 
-        //TODO: Set up data binding and assign a reference to ViewModel
+        //TODO: Create a new binding using DataBindingUtil
+
+        //TODO: Create a new PasswordViewModel object
+
+        //TODO: Set the binding's ViewModel to your new PasswordViewModel
+
 
     }
 }
