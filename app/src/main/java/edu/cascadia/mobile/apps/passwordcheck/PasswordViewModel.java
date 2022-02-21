@@ -3,35 +3,39 @@ package edu.cascadia.mobile.apps.passwordcheck;
 import androidx.databinding.BaseObservable;
 
 import androidx.databinding.Bindable;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
-public class PasswordViewModel extends BaseObservable {
-    private String password;
+public class PasswordViewModel extends ViewModel {
+    private MutableLiveData<String> password;
+    private LiveData<String> passwordQuality;
 
-    @Bindable
-    public String getPassword() {
+    public PasswordViewModel(MutableLiveData<String> password, LiveData<String> passwordQuality) {
+        this.password = password;
+        this.passwordQuality = passwordQuality;
+    }
+
+
+    public MutableLiveData<String> getPassword() {
         return password;
     }
-
-    @Bindable
-    public String getPasswordQuality() {
-        if (password == null || password.isEmpty()) {
-            return "Enter a password";
-        } else if (password.equals("password")) {
-            return "Very bad";
-        } else if (password.length() < 6) {
-            return "Short";
-        } else {
-            return "Okay";
-        }
-    }
-
-    public void setPassword(String password) {
-        if(this.password != password) {
+    public void setPassword(MutableLiveData<String> password) {
+        if (this.password != password) {
             this.password = password;
-            notifyPropertyChanged(BR.passwordQuality);
-            notifyPropertyChanged(BR.password);
+            notifyPropertyChanged(passwordQuality);
+            notifyPropertyChanged(password);
         }
     }
-
-
-}
+        public LiveData<String> getPasswordQuality () {
+            if (password == null || password.isEmpty()) {
+                return "Enter a password";
+            } else if (password.equals("password")) {
+                return "Very bad";
+            } else if (password.length() < 6) {
+                return "Short";
+            } else {
+                return "Okay";
+            }
+        }
+    }
